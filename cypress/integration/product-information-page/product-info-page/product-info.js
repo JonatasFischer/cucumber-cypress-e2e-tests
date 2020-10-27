@@ -13,6 +13,10 @@ And('There is a modifier called {string}', (modifierName) => {
     ProductInfo.checkModifierExists(modifierName);
 });
 
+And('There is no modifier called {string}', (modifierName) => {
+    ProductInfo.checkModifierNotExists(modifierName);
+});
+
 And('There is a option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.checkModifierOptionExists(optionName, modifierName);
 });

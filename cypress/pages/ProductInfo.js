@@ -33,11 +33,14 @@ export default class ProductInfo {
     }
 
     static checkModifierOptionIsInactive(optionName, modifierName) {
-        cy.get(MODIFIER_GROUP(modifierName)).parent().find(MODIFIER_OPTION(optionName)).should('be.disabled');
+        cy.wait(2000).get(MODIFIER_GROUP(modifierName)).parent().find(MODIFIER_OPTION(optionName)).should('be.disabled');
     }
 
     static selectModifierOption(optionName, modifierName) {
-        cy.get(MODIFIER_GROUP(modifierName)).parent().find(MODIFIER_OPTION_SELECT()).select(optionName).trigger("change").wait(1000);
+        cy.get(MODIFIER_GROUP(modifierName)).parent().find(MODIFIER_OPTION_SELECT()).select(optionName).trigger("change");
     }
 
+    static checkModifierNotExists(modifierName) {
+        cy.get(MODIFIER_GROUP(modifierName)).should('not.exist');
+    }
 }
