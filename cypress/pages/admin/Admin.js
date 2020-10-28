@@ -1,5 +1,6 @@
 export default class Admin {
     static login() {
+        cy.visit('/en');
         cy.url().then((curUrl) => {
             if (curUrl.indexOf('/admin/') === -1) {
                 cy.visit('/admin/?language=en');

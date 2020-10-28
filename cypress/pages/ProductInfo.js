@@ -34,12 +34,16 @@ export default class ProductInfo {
     }
 
     static checkModifierOptionIsInactive(optionName, modifierName) {
-        cy.wait(2000).get(MODIFIER_GROUP_LABEL(modifierName)).parent().find(MODIFIER_OPTION(optionName)).should('be.disabled');
+        cy.get(MODIFIER_GROUP_LABEL(modifierName)).parent().find(MODIFIER_OPTION(optionName)).should('be.disabled');
     }
 
     static selectModifierOption(optionName, modifierName) {
         cy.get(MODIFIER_GROUP_LABEL(modifierName)).parents('div.modifier-group:first').within((obj)=> {
-            cy.get(MODIFIER_OPTION_SELECT()).select(optionName).trigger("change");
+            cy.server()
+            cy.route('GET', '**do=CheckStatus**').as('CheckStatus');
+            cy.get(MODIFIER_OPTION_SELECT()).select(optionName,{force: true}).trigger("change");
+            //this 1 second wait is to be sure that the browser had time enough to update the dom
+            cy.wait('@CheckStatus').wait(1000);
         })
 /*        cy.window().then((wnd)=> {
             debugger;
