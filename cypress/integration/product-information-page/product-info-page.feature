@@ -26,10 +26,26 @@ Feature: Product Information Page
     And  There is a modifier called "Size"
     And  There is a option "S" for the modifier "Size"
     And  The option "S" for the modifier "Size" is active
+    And  There is a option "M" for the modifier "Size"
+    And  The option "M" for the modifier "Size" is active
+    And  There is a option "L" for the modifier "Size"
+    And  The option "L" for the modifier "Size" is active
+    And  There is a modifier called "Color"
     And  The option "Gold" for the modifier "Color" is active
-    When I selected the option "S" for the modifier "Size"
-    Then The option "Gold" for the modifier "Color" is not active
+    And  The option "Red" for the modifier "Color" is active
     And  The option "Black" for the modifier "Color" is active
+    And  The button add to cart is disabled
+
+    When I selected the option "S" for the modifier "Size"
+    Then The option "S" for the modifier "Size" is active
+    And  The option "M" for the modifier "Size" is active
+    And  The option "L" for the modifier "Size" is active
+    And  The option "Gold" for the modifier "Color" is not active
+    And  The option "Black" for the modifier "Color" is active
+    And  The option "Red" for the modifier "Color" is active
+    And  The button add to cart is disabled
+    And  The error message "This product ist not available." is not visible
+
 
   Scenario: Combination without stock should not be selectable (Combination stock : Global Configuration, Stock Check, Check attribute stock level)
 

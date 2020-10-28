@@ -1,6 +1,5 @@
-const CONFIGURATION_LABEL = (name) => `li.configuration > span.label > span:contains(${name})`;
-const CONFIGURATION_INPUT_CHECK = () => `div.configuration-item > label.gx-switcher > input[type="checkbox"]`;
-const CONFIGURATION_CHECK_CLICK = () => `div.configuration-item > label.gx-switcher`;
+const CONFIGURATION_INPUT_CHECK = (name) => `li[data-title="${name}"] > div.configuration-item > label.gx-switcher > input[type="checkbox"]`;
+const CONFIGURATION_CHECK_CLICK = (name) => `li[data-title="${name}"] > div.configuration-item > label.gx-switcher`;
 const SAVE_BUTTON = () => `div.bottom-save-bar > div.vue-portal-target > button `;
 
 export default class Settings {
@@ -10,10 +9,9 @@ export default class Settings {
     }
 
     static checkParameter(name) {
-        cy.get(CONFIGURATION_LABEL(name)).should('exist').closest('li')
-            .find(CONFIGURATION_INPUT_CHECK()).then((checkbox) => {
+        cy.get(CONFIGURATION_INPUT_CHECK(name)).should('exist').then((checkbox) => {
                 if(!checkbox.is(':checked')) {
-                    cy.get(CONFIGURATION_LABEL(name)).closest('li').find(CONFIGURATION_CHECK_CLICK()).then((label) => {
+                    cy.get(CONFIGURATION_CHECK_CLICK(name)).then((label) => {
                         label.trigger("click")
 
                     });
@@ -22,13 +20,11 @@ export default class Settings {
 
     }
     static isParameterChecked(name) {
-        cy.get(CONFIGURATION_LABEL(name)).should('exist').closest('li')
-            .find(CONFIGURATION_INPUT_CHECK()).should('have.attr', 'checked');
+        cy.get(CONFIGURATION_INPUT_CHECK(name)).should('have.attr', 'checked');
     }
 
     static isParameterUnchecked(name) {
-        cy.get(CONFIGURATION_LABEL(name)).should('exist').closest('li')
-            .find(CONFIGURATION_INPUT_CHECK()).should('not.have.attr', 'checked');
+        cy.get(CONFIGURATION_INPUT_CHECK(name)).should('not.have.attr', 'checked');
     }
 
     static isSaveButtonActive() {
@@ -37,16 +33,14 @@ export default class Settings {
 
 
     static uncheckParameter(name) {
-        cy.get(CONFIGURATION_LABEL(name)).should('exist').closest('li')
-            .find(CONFIGURATION_INPUT_CHECK()).then((checkbox) => {
+        cy.get(CONFIGURATION_INPUT_CHECK(name)).should('exist').then((checkbox) => {
             if(checkbox.is(':checked')) {
-                cy.get(CONFIGURATION_LABEL(name)).closest('li').find(CONFIGURATION_CHECK_CLICK()).then((label) => {
+                cy.get(CONFIGURATION_CHECK_CLICK(name)).then((label) => {
                     label.trigger("click")
 
                 });
             }
         });
-
     }
 
     static saveButtonIsEnabled() {

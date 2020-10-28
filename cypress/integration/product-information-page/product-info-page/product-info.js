@@ -4,6 +4,9 @@ import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
 Then('The product info page must be active', () => {
     ProductInfo.isActive();
 });
+Then('The error message {string} is not visible', (message) => {
+    ProductInfo.errorMessageIsNotVisible(message);
+});
 
 And('The selected product is {string}', (product) => {
     ProductInfo.titleIsEqual(product);
@@ -31,6 +34,10 @@ And('The option {string} for the modifier {string} is active', (optionName, modi
 And('The option {string} for the modifier {string} is not active', (optionName, modifierName) => {
     ProductInfo.checkModifierOptionIsInactive(optionName, modifierName);
 });
+
+Then('The button add to cart is disabled', (optionName, modifierName) => {
+    ProductInfo.isAddToCartButtonDisabled();
+});
 /**
  When I selected the option "S" for the modifier "Größe"
  **/
@@ -40,3 +47,4 @@ When('I selected the option {string} for the modifier {string}', (optionName, mo
 And('I selected the option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.selectModifierOption(optionName, modifierName);
 });
+Then
