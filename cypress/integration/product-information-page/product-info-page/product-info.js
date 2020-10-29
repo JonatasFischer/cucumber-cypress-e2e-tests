@@ -38,6 +38,10 @@ And('The option {string} for the modifier {string} is not active', (optionName, 
 Then('The button add to cart is disabled', (optionName, modifierName) => {
     ProductInfo.isAddToCartButtonDisabled();
 });
+
+Then('The product price is {string}', (price) => {
+    ProductInfo.priceIsEquals(price);
+});
 /**
  When I selected the option "S" for the modifier "Größe"
  **/

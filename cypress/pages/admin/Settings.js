@@ -11,7 +11,7 @@ export default class Settings {
     static checkParameter(name) {
         cy.get(CONFIGURATION_INPUT_CHECK(name)).should('exist').then((checkbox) => {
                 if(!checkbox.is(':checked')) {
-                    cy.get(CONFIGURATION_CHECK_CLICK(name)).then((label) => {
+                    cy.get(CONFIGURATION_CHECK_CLICK(name)).scrollIntoView().then((label) => {
                         label.trigger("click")
 
                     });
@@ -35,7 +35,7 @@ export default class Settings {
     static uncheckParameter(name) {
         cy.get(CONFIGURATION_INPUT_CHECK(name)).should('exist').then((checkbox) => {
             if(checkbox.is(':checked')) {
-                cy.get(CONFIGURATION_CHECK_CLICK(name)).then((label) => {
+                cy.get(CONFIGURATION_CHECK_CLICK(name)).scrollIntoView().then((label) => {
                     label.trigger("click")
 
                 });

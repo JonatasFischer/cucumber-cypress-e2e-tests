@@ -9,7 +9,8 @@ export default class ProductInfo {
 
     static isActive() {
         //here we wait in order to make sure that chrome runs all the page events and module register
-        cy.wait(3000).url().should('include', '/product_info.php')
+        cy.url().should('include', '/product_info.php')
+        cy.server();
     }
 
     static titleIsEqual(product) {
@@ -39,11 +40,11 @@ export default class ProductInfo {
 
     static selectModifierOption(optionName, modifierName) {
         cy.get(MODIFIER_GROUP_LABEL(modifierName)).parents('div.modifier-group:first').within((obj)=> {
-            cy.server()
+
             cy.route('GET', '**do=CheckStatus**').as('CheckStatus');
-            cy.get(MODIFIER_OPTION_SELECT()).select(optionName,{force: true}).trigger("change");
+            cy.get(MODIFIER_OPTION_SELECT()).scrollIntoView().select(optionName).wait('@CheckStatus');
             //this 1 second wait is to be sure that the browser had time enough to update the dom
-            cy.wait('@CheckStatus').wait(1000);
+            //cy..wait(1000);
         })
 /*        cy.window().then((wnd)=> {
             debugger;
@@ -57,7 +58,7 @@ export default class ProductInfo {
     }
 
     static errorMessageIsNotVisible(message) {
-        cy.get(`div.cart-error-msg:contains(${message})`).should('not.exist');
+        cy.get(`div.cart-error-msg:contains(${message})`).should('not.be.visible');
     }
 
     static isAddToCartButtonDisabled(message) {
@@ -65,5 +66,8 @@ export default class ProductInfo {
     }
     static isAddToCartButtonEnabled(message) {
         cy.get(`button.btn-add-to-cart`).should('be.enabled');
+    }
+    static priceIsEquals(price) {
+        cy.get(`div.current-price-container`).should('contain', price);
     }
 }

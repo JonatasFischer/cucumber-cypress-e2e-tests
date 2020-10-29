@@ -35,6 +35,7 @@ Feature: Product Information Page
     And  The option "Red" for the modifier "Color" is active
     And  The option "Black" for the modifier "Color" is active
     And  The button add to cart is disabled
+    And  The product price is "From only 14,62 EUR"
 
     When I selected the option "S" for the modifier "Size"
     Then The option "S" for the modifier "Size" is active
@@ -44,6 +45,7 @@ Feature: Product Information Page
     And  The option "Black" for the modifier "Color" is active
     And  The option "Red" for the modifier "Color" is active
     And  The button add to cart is disabled
+    And  The product price is "From only 14,62 EUR"
     And  The error message "This product ist not available." is not visible
 
 
