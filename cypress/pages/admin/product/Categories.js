@@ -5,6 +5,7 @@ const PRODUCT_ROW = (name) => `tr.dataTableRow > td > a:contains(${name})`;
 const PRODUCT_ACTIONS_BUTTON = () => `button > i.fa-caret-down`;
 const PRODUCT_OPTIONS_LINK = () => `span[data-value="BUTTON_PROPERTIES"]`;
 const PRODUCT_EDIT_LINK = () => `span[data-value="edit"]`;
+
 export default class Categories {
 
     static editPropertiesForProduct(product) {

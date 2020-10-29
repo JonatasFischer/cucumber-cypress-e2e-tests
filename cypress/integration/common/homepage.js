@@ -1,5 +1,5 @@
-import Homepage from './../../../pages/Homepage';
-import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import Homepage from './../../pages/Homepage';
+import {Given, Then} from 'cypress-cucumber-preprocessor/steps';
 
 Given('I am on the homepage', () => {
     Homepage.visit();

@@ -1,8 +1,8 @@
-import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-import Admin from "../../../pages/admin/Admin";
-import Categories from "../../../pages/admin/product/Categories";
-import Combinations from "../../../pages/admin/product/Combinations";
-import ProductMaintenance from "../../../pages/admin/product/ProductMaintenance";
+import {Given} from 'cypress-cucumber-preprocessor/steps';
+import Admin from "../../pages/admin/Admin";
+import Categories from "../../pages/admin/product/Categories";
+import Combinations from "../../pages/admin/product/Combinations";
+import ProductMaintenance from "../../pages/admin/product/ProductMaintenance";
 
 Given("I'm at the categories page", () => {
     Admin.login();

@@ -33,8 +33,14 @@ export default class Combinations {
     }
 
     static saveCombination() {
+        cy.server();
+        //GET (canceled) /admin/request_port.php?module=PropertiesCombisAdmin&action=load&template=combis_table&combis_id=1&products_id=1
         cy.get('div.lightbox_properties_combis_edit').parents('div.lightbox_content_container:first').within(() => {
+            cy.route('GET', '**module=PropertiesCombisAdmin&action=load**').as('PropertiesCombisAdminActionLoad');
+            cy.route('POST', '**/admin/request_port.php?module=PropertiesCombisAdmin&action=save&type=combis**').as('PropertiesCombisAdminActionPOST');
             cy.get('div.button_right_container > a.save_close').click();
+            cy.wait('@PropertiesCombisAdminActionPOST')
+            cy.wait('@PropertiesCombisAdminActionLoad')
         })
 
     }

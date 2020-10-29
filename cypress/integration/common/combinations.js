@@ -1,7 +1,5 @@
-import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
-import Admin from "../../../pages/admin/Admin";
-import Combinations from "../../../pages/admin/product/Combinations";
-import Settings from "../../../pages/admin/Settings";
+import {Then} from 'cypress-cucumber-preprocessor/steps';
+import Combinations from "../../pages/admin/product/Combinations";
 
 //admin/properties_combis.php?products_id
 Then("The product combinations page is active", () => {

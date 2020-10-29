@@ -38,6 +38,8 @@ Feature: Product Information Page
     And  The product price is "From only 14,62 EUR"
 
     When I selected the option "S" for the modifier "Size"
+    And  I selected the option "Black" for the modifier "Color"
+
     Then The option "S" for the modifier "Size" is active
     And  The option "M" for the modifier "Size" is active
     And  The option "L" for the modifier "Size" is active

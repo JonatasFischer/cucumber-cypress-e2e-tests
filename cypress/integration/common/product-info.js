@@ -1,5 +1,5 @@
-import ProductInfo from './../../../pages/ProductInfo';
-import { Given, And, Then } from 'cypress-cucumber-preprocessor/steps';
+import ProductInfo from './../../pages/ProductInfo';
+import {And, Then} from 'cypress-cucumber-preprocessor/steps';
 
 Then('The product info page must be active', () => {
     ProductInfo.isActive();
