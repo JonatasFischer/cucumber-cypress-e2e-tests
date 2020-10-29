@@ -16,4 +16,32 @@ export default class ProductMaintenance {
     static setQuantity(quantity) {
         cy.get('input[type="text"][name="products_quantity"]').should('exist').clear().type(quantity);
     }
+
+    static checkField(fieldLabel) {
+        cy.get(`div.control-group > div > label:contains(${fieldLabel})`)
+            .parents('div.control-group:first')
+            .should('exist')
+            .within((parent)=> {
+
+            cy.get(`input[type="checkbox"]`).should('exist').then((checkbox) => {
+                if(!checkbox.is(':checked')) {
+                    cy.get('div.switcher').click();
+                }
+            });
+
+
+        });
+    }
+
+    static fillProdudctName(language, text) {
+        //"div.frame-wrapper > div.frame-head > label > span.flag-icon-de"
+        cy.get(`div.frame-wrapper > div.frame-head > label > span.flag-icon-${language}`)
+            .parents('div.frame-wrapper:first')
+            .within((element) => {
+                cy.get('input[name*="products_name"]').type(text)
+        })
+
+    }
+
+
 }

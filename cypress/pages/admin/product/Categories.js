@@ -47,4 +47,34 @@ export default class Categories {
 
         );
     }
+
+    static clickCreateProduct() {
+        cy.get('div.create-new-container > div > button > i.fa-caret-down').parents('button:first').click({force: true})
+        cy.get('div.create-new-container > div > ul > li > span:contains(product)').click()
+    }
+
+    static deleteProductsNamedAs(productName) {
+        cy.get('body').then(($body)=>{
+            if ($body.find(PRODUCT_ROW(productName)).length > 0) {   //evaluates as true
+                cy.get(PRODUCT_ROW(productName)).parents('tr.dataTableRow')
+                    .find('input[name="multi_products[]"]')
+                    .check({force: true})
+                    .then((elements) => {
+                        cy.server();
+                        //cy.route('POST', '**/admin/categories.php?action=multi_action&cPath=**').as('multi_action')
+                        cy.get('div[data-config_key="multiCategoryOverviewDropdownBtn"] > ul > li > span[data-value="delete"]').click({force: true}).then(() => {
+                            //cy.wait('@multi_action');
+                            cy.get('div.ui-dialog-buttonset > button.btn-primary:contains("Delete")').click().then((obj) => {
+                                this.deleteProductsNamedAs(productName)
+                            })
+                            //this.deleteProductsNamedAs(productName)
+                        })
+
+                    })
+            }
+        })
+
+    }
+
+
 }
