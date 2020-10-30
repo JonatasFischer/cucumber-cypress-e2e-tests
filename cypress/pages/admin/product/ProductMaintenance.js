@@ -43,5 +43,9 @@ export default class ProductMaintenance {
 
     }
 
+    static setPrice(price) {
+        cy.get(`input[name="products_price"]`).clear().type(price)
+    }
+
 
 }

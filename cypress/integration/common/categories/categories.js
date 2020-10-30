@@ -29,7 +29,7 @@ Then("I am redirected to the new product page", () => {
     ProductMaintenance.isActive()
 });
 
-When("I update the product quantity to {string}", (quantity) => {
+When("I define the product quantity as {string}", (quantity) => {
     ProductMaintenance.setQuantity(quantity)
 });
 When("I check the field {string}", (fieldLabel) => {
@@ -42,6 +42,10 @@ When("I fill the product name for the language {string} with {string}", (languag
 When("I delete any product with the name as {string}", (productName) => {
     Categories.deleteProductsNamedAs(productName)
 });
+
 When("I save the product", (quantity) => {
     ProductMaintenance.save()
+});
+When("I define the product price as {string}", (price) => {
+    ProductMaintenance.setPrice(price)
 });

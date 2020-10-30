@@ -1,11 +1,18 @@
 import ProductInfo from './../../pages/ProductInfo';
 import {And, Then} from 'cypress-cucumber-preprocessor/steps';
 
+var {Given} = require('cucumber');
+
 Then('The product info page must be active', () => {
     ProductInfo.isActive();
 });
+
 Then('The error message {string} is not visible', (message) => {
     ProductInfo.errorMessageIsNotVisible(message);
+});
+
+Then('The error message {string} is visible', (message) => {
+    ProductInfo.errorMessageIsVisible(message);
 });
 
 And('The selected product is {string}', (product) => {
@@ -39,16 +46,31 @@ Then('The button add to cart is disabled', (optionName, modifierName) => {
     ProductInfo.isAddToCartButtonDisabled();
 });
 
+Then('The button add to cart is enabled', (optionName, modifierName) => {
+    ProductInfo.isAddToCartButtonEnabled();
+});
+
 Then('The product price is {string}', (price) => {
     ProductInfo.priceIsEquals(price);
 });
+
+Then('There is no modifier  in the page', () => {
+    ProductInfo.pageHasNoModifiers();
+});
+
 /**
  When I selected the option "S" for the modifier "Größe"
  **/
+
 When('I selected the option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.selectModifierOption(optionName, modifierName);
 });
+
+
+When('I set the quantity {string}', (quantity) => {
+    ProductInfo.setProductQuantity(quantity);
+});
+
 And('I selected the option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.selectModifierOption(optionName, modifierName);
 });
-Then
