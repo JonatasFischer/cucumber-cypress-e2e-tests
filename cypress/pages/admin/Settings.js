@@ -4,8 +4,9 @@ const SAVE_BUTTON = () => `div.bottom-save-bar > div.vue-portal-target > button 
 
 export default class Settings {
     static visit() {
-        cy.visit('/admin/configurations');
-        cy.url().should('include','/admin/configurations');
+        cy.visit('/admin/configurations?language=en')
+            .url()
+            .should('include','/admin/configurations');
     }
 
     static checkParameter(name) {

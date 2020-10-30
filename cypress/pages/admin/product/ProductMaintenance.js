@@ -10,7 +10,12 @@ export default class ProductMaintenance {
     }
 
     static save() {
-        cy.get('button[type="submit"][title="Save"]').should('exist').click({force: true});
+        cy.get('button[type="submit"][title="Save"]').should('exist').click({force: true})
+            .wait('@AdminRequestPortGet')
+            .wait('@DirectHelpProxy')
+            .wait('@SessionTimeoutAjax')
+            .wait('@DynamicShopMessages')
+        ;
     }
 
     static setQuantity(quantity) {
@@ -25,7 +30,7 @@ export default class ProductMaintenance {
 
             cy.get(`input[type="checkbox"]`).should('exist').then((checkbox) => {
                 if(!checkbox.is(':checked')) {
-                    cy.get('div.switcher').click();
+                    cy.get('div.switcher').click().wait('@FileManagerGetConfiguration');
                 }
             });
 

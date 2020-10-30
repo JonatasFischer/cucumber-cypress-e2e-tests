@@ -83,4 +83,12 @@ export default class ProductInfo {
     static setProductQuantity(quantity) {
         cy.get('#attributes-calc-quantity').clear().type(quantity).wait('@CheckStatusAttributes')
     }
+
+    static errorMessageDoesntExist(message) {
+        cy.get(`div.cart-error-msg:contains(${message})`).should('not.exist');
+    }
+
+    static errorMessageExist(message) {
+        cy.get(`div.cart-error-msg:contains(${message})`).should('exist');
+    }
 }
