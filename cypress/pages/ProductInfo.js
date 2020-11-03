@@ -43,7 +43,7 @@ export default class ProductInfo {
         cy.get(MODIFIER_GROUP_LABEL(modifierName)).parents('div.modifier-group:first').within((obj)=> {
 
 
-            cy.get(MODIFIER_OPTION_SELECT()).scrollIntoView().select(optionName).wait('@CheckStatus');
+            cy.get(MODIFIER_OPTION_SELECT()).scrollIntoView().select(optionName).wait('@CheckStatusAttributes');
             //this 1 second wait is to be sure that the browser had time enough to update the dom
             //cy..wait(1000);
         })
@@ -73,7 +73,10 @@ export default class ProductInfo {
         cy.get(`[name="btn-add-to-cart"]`).should('be.visible').should('be.enabled');
     }
     static priceIsEquals(price) {
-        cy.get(`div.current-price-container`).should('contain', price);
+        cy.get(`div.current-price-container`).should($el => expect($el.text().trim()).to.equal(price));
+    }
+    static weightIsEquals(weight) {
+        cy.get(`dd.products-details-weight-container >span`).should($el => expect($el.text().trim()).to.equal(weight));
     }
 
     static pageHasNoModifiers() {
@@ -90,5 +93,9 @@ export default class ProductInfo {
 
     static errorMessageExist(message) {
         cy.get(`div.cart-error-msg:contains(${message})`).should('exist');
+    }
+
+    static checkModifierOptionSelected(optionName, modifierName) {
+        cy.get(MODIFIER_GROUP_LABEL(modifierName)).parent().find(MODIFIER_OPTION(optionName)).should('be.selected');
     }
 }

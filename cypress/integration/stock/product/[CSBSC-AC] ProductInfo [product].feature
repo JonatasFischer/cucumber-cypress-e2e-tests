@@ -1,9 +1,9 @@
-Feature: Check Stock Level - Product Info Stock Validations
+Feature: Product Info Stock Validations (Check Stock Before Shopping Car and Allow Checkout Enabled)
 
   Scenario: Selling without available quantity
 
     Given I have the following parameters configured in the settings page
-      | Check stock level                 | checked   |
+      | Check stock level                 | unchecked |
       | Check stock before shopping cart? | unchecked |
       | Allow Checkout                    | unchecked |
     And I'm at the categories page
@@ -34,7 +34,7 @@ Feature: Check Stock Level - Product Info Stock Validations
   Scenario: Selling available quantity
 
     Given I have the following parameters configured in the settings page
-      | Check stock level                 | checked   |
+      | Check stock level                 | unchecked |
       | Check stock before shopping cart? | unchecked |
       | Allow Checkout                    | unchecked |
     And I'm at the categories page
@@ -70,7 +70,7 @@ Feature: Check Stock Level - Product Info Stock Validations
   Scenario: Selling more than the available quantity
 
     Given I have the following parameters configured in the settings page
-      | Check stock level                 | checked   |
+      | Check stock level                 | unchecked |
       | Check stock before shopping cart? | unchecked |
       | Allow Checkout                    | unchecked |
     And I'm at the categories page

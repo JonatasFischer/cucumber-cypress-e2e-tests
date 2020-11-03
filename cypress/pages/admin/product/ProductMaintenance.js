@@ -30,7 +30,7 @@ export default class ProductMaintenance {
 
             cy.get(`input[type="checkbox"]`).should('exist').then((checkbox) => {
                 if(!checkbox.is(':checked')) {
-                    cy.get('div.switcher').click().wait('@FileManagerGetConfiguration');
+                    cy.get('div.switcher').click();
                 }
             });
 
@@ -53,4 +53,7 @@ export default class ProductMaintenance {
     }
 
 
+    static setWeight(weight) {
+        cy.get(`input[name="products_weight"]`).clear().type(weight)
+    }
 }

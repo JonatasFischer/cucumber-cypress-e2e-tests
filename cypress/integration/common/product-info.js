@@ -45,6 +45,10 @@ And('The option {string} for the modifier {string} is active', (optionName, modi
     ProductInfo.checkModifierOptionNotIsActive(optionName, modifierName);
 });
 
+And('The option {string} for the modifier {string} is selected', (optionName, modifierName) => {
+    ProductInfo.checkModifierOptionSelected(optionName, modifierName);
+});
+
 And('The option {string} for the modifier {string} is not active', (optionName, modifierName) => {
     ProductInfo.checkModifierOptionIsInactive(optionName, modifierName);
 });
@@ -61,12 +65,12 @@ Then('The product price is {string}', (price) => {
     ProductInfo.priceIsEquals(price);
 });
 
-Then('There is no modifier  in the page', () => {
-    ProductInfo.pageHasNoModifiers();
+Then('The product weight is {string}', (weight) => {
+    ProductInfo.weightIsEquals(weight);
 });
 
-When('I selected the option {string} for the modifier {string}', (optionName, modifierName) => {
-    ProductInfo.selectModifierOption(optionName, modifierName);
+Then('There is no modifier  in the page', () => {
+    ProductInfo.pageHasNoModifiers();
 });
 
 When('I set the quantity {string}', (quantity) => {
