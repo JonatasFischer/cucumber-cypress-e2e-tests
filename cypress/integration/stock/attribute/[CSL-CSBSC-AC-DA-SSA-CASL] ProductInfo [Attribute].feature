@@ -501,7 +501,7 @@ Feature: Check Stock Level, Check Stock Before Shopping Cart, Allow Checkout, De
 	And  The button add to cart is enabled
   
   
-  Scenario: Selling more than product stock and more than one two option stock
+  Scenario: Selling more than product stock and more than attributes options stock
 	Given I have the module "Product Options" installed
 	And I have the following parameters configured in the settings page
 	  | Check stock level                 | checked |

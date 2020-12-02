@@ -66,8 +66,8 @@ Feature: Product Info Stock Validations  for product with attribute (no stock va
     Then The product info page must be active
     And  The selected product is "English Description"
     And  There is a modifier called "Gift Box EN"
-    And  There is a option "No" for the modifier "Gift Box EN"
-    And  There is a option "Yes" for the modifier "Gift Box EN"
+    And  There is an option "No" for the modifier "Gift Box EN"
+    And  There is an option "Yes" for the modifier "Gift Box EN"
     And  The option "No" for the modifier "Gift Box EN" is active
     And  The option "No" for the modifier "Gift Box EN" is selected
     And  The option "Yes" for the modifier "Gift Box EN" is active
