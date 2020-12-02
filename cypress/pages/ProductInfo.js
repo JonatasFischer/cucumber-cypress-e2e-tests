@@ -11,7 +11,7 @@ export default class ProductInfo {
         //here we wait in order to make sure that chrome runs all the page events and module register
         cy.url().should('include', '/product_info.php')
         cy.server();
-        cy.route('GET', '/shop.php?do=CheckStatus/Attributes**').as('CheckStatusAttributes');
+        cy.route('GET', /(\/shop.php\?do=CheckStatus)/).as('CheckStatus');
     }
 
     static titleIsEqual(product) {
@@ -43,7 +43,7 @@ export default class ProductInfo {
         cy.get(MODIFIER_GROUP_LABEL(modifierName)).parents('div.modifier-group:first').within((obj)=> {
 
 
-            cy.get(MODIFIER_OPTION_SELECT()).scrollIntoView().select(optionName).wait('@CheckStatusAttributes');
+            cy.get(MODIFIER_OPTION_SELECT()).scrollIntoView().select(optionName).wait('@CheckStatus');
             //this 1 second wait is to be sure that the browser had time enough to update the dom
             //cy..wait(1000);
         })
@@ -59,7 +59,7 @@ export default class ProductInfo {
     }
 
     static errorMessageIsNotVisible(message) {
-        cy.get(`div.cart-error-msg:contains(${message})`).should('not.be.visible');
+        cy.get(`div.cart-error-msg:contains(${message})`).should('not.exist');
     }
 
     static errorMessageIsVisible(message) {
@@ -67,7 +67,7 @@ export default class ProductInfo {
     }
 
     static isAddToCartButtonDisabled() {
-        cy.get(`button[name="btn-add-to-cart"]`).should('not.be.enabled');
+        cy.get(`[name="btn-add-to-cart"]`).should('be.visible').should('not.be.enabled');
     }
     static isAddToCartButtonEnabled() {
         cy.get(`[name="btn-add-to-cart"]`).should('be.visible').should('be.enabled');
@@ -84,7 +84,7 @@ export default class ProductInfo {
     }
 
     static setProductQuantity(quantity) {
-        cy.get('#attributes-calc-quantity').clear().type(quantity).wait('@CheckStatusAttributes')
+        cy.get('#attributes-calc-quantity').clear().type(quantity).wait('@CheckStatus')
     }
 
     static errorMessageDoesntExist(message) {

@@ -34,7 +34,7 @@ And('There is no modifier called {string}', (modifierName) => {
     ProductInfo.checkModifierNotExists(modifierName);
 });
 
-And('There is a option {string} for the modifier {string}', (optionName, modifierName) => {
+And('There is an option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.checkModifierOptionExists(optionName, modifierName);
 });
 And('There is no option {string} for the modifier {string}', (optionName, modifierName) => {

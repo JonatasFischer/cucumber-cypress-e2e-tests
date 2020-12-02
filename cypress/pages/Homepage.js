@@ -2,7 +2,7 @@ const PRODUCT_LINK = (title) => `a:visible[title="${title}"]`;
 
 export default class Homepage {
     static visit() {
-        cy.server().route('POST', '**CartDropdown').as('CartDropdown').visit('/en').wait('@CartDropdown');
+        cy.server().route('POST', '**CartDropdown').as('CartDropdown').visit('/en');
 
     }
 
@@ -16,6 +16,6 @@ export default class Homepage {
     }
 
     static clickInProduct(product) {
-        cy.get(PRODUCT_LINK(product)).first().click().wait('@CartDropdown');
+        cy.get(PRODUCT_LINK(product)).first().click();
     }
 }

@@ -29,9 +29,8 @@ Feature: Check Stock Level, Check Stock Before Shopping Cart - Product Info Stoc
     And  The button add to cart is disabled
     And  The error message "This product ist not available." is visible
     When I set the quantity "9"
-    Then  is disabled
+    And  The button add to cart is disabled
     And  The error message "This product ist not available." is visible
-    And  The error message "This product is not in stock. The quantity entered will be supplied by us very soon." is not visible
 
 
   Scenario: Selling available quantity
@@ -64,7 +63,7 @@ Feature: Check Stock Level, Check Stock Before Shopping Cart - Product Info Stoc
     And  The error message "This product ist not available." is not visible
     And  The error message "This product is not in stock. The quantity entered will be supplied by us very soon." is not visible
     When I set the quantity "9"
-    And  The error message "This product ist not available." is not visible
+    Then The error message "This product ist not available." is not visible
     Then The error message "This product is not in stock. The quantity entered will be supplied by us very soon." is not visible
     And  The button add to cart is enabled
 
