@@ -1,4 +1,5 @@
 {
+  "license": "UNLICENSED",
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
