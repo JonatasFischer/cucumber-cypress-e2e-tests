@@ -6,6 +6,10 @@
     "ADMIN_EMAIL": "YOUR ADMIN EMAIL",
     "ADMIN_PWD": "YOUR ADMIN PASSWORD"
   },
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
   "viewportHeight": 800,
   "viewportWidth": 1280
 }
