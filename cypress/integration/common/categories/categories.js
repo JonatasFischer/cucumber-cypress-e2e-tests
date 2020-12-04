@@ -6,7 +6,6 @@ import ProductAttributes from "../../../pages/admin/product/ProductAttributes";
 import ProductMaintenance from "../../../pages/admin/product/ProductMaintenance";
 
 Given("I'm at the categories page", () => {
-    Admin.login();
     Categories.visit()
 });
 When("I navigate to the {string} category", (categoryName) => {

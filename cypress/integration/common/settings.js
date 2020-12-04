@@ -3,7 +3,6 @@ import Admin from "../../pages/admin/Admin";
 import Settings from "../../pages/admin/Settings";
 
 Given("I'm at the settings page", () => {
-    Admin.login();
     Settings.visit()
 });
 When('I check the parameter {string}', (configuration) => {
@@ -26,7 +25,6 @@ Then('I click in the save button', () => {
 
 
 And('I have the following parameters configured in the settings page', (datatable) => {
-    Admin.login();
     Settings.visit()
     datatable.rawTable.forEach((item, index) => {
         if (item[1] === 'checked') {

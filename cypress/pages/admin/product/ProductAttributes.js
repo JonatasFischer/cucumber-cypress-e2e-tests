@@ -14,10 +14,13 @@ export default class ProductAttributes {
     }
     static configureOption(attributeName, optionName, config) {
           cy.get(`tr[data-title="${attributeName}"][data-value-title="${optionName}"]`).within(($table) => {
-              if(config.checked)
-                cy.get('input[name="optionValues[]"]').check()
-              else
-                  cy.get('input[name="optionValues[]"]').uncheck()
+              if(config.checked !== undefined) {
+                  if (config.checked) {
+                      cy.get('input[name="optionValues[]"]').check()
+                  } else {
+                      cy.get('input[name="optionValues[]"]').uncheck()
+                  }
+              }
               if(config.sort_order !== undefined)
                   cy.get('input[name*="_sortorder"]').clear().type(config.sort_order)
 

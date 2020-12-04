@@ -1,15 +1,14 @@
 export default class Admin {
     static login() {
-        cy.server()
-            .route('POST', '**/survey_questions').as('survey')
-            .route('POST', /(\/admin\/admin\.php\?)/).as('AdminPost')
-            .route('GET', /(\/admin\/admin\.php\?)/).as('AdminGet')
-            .route('GET',/(\/admin\/request_port\.php\?)/).as('AdminRequestPortGet')
-            .route('GET',/(\/admin\/admin\.php\?do=DirectHelpProxy)/).as('DirectHelpProxy')///admin/admin.php?do=DirectHelpProxy
-            .route('GET',"/admin/admin.php?do=SessionTimeoutAjax").as('SessionTimeoutAjax')
-            .route('GET',"/admin/admin.php?do=DynamicShopMessages").as('DynamicShopMessages')
-            .route('GET',"/admin/admin.php?do=AdminInfoBoxAjax/GetAllMessages").as('GetAllMessages')
-            .route('POST',/(\/admin\/request_port\.php\?)/).as('AdminRequestPortPost')
+        cy.intercept('POST', '**/survey_questions').as('survey')
+            .intercept('POST', /(\/admin\/admin\.php\?)/).as('AdminPost')
+            .intercept('GET', /(\/admin\/admin\.php\?)/).as('AdminGet')
+            .intercept('GET',/(\/admin\/request_port\.php\?)/).as('AdminRequestPortGet')
+            .intercept('GET',/(\/admin\/admin\.php\?do=DirectHelpProxy)/).as('DirectHelpProxy')///admin/admin.php?do=DirectHelpProxy
+            .intercept('GET',"/admin/admin.php?do=SessionTimeoutAjax").as('SessionTimeoutAjax')
+            .intercept('GET',"/admin/admin.php?do=DynamicShopMessages").as('DynamicShopMessages')
+            .intercept('GET',"/admin/admin.php?do=AdminInfoBoxAjax/GetAllMessages").as('GetAllMessages')
+            .intercept('POST',/(\/admin\/request_port\.php\?)/).as('AdminRequestPortPost')
 
 
 

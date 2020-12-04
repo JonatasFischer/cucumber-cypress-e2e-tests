@@ -2,7 +2,7 @@ export default class Modules {
     static visit() {
         cy.visit('/admin/admin.php?do=ModuleCenter')
         ///admin/admin.php?do=ModuleCenter/GetData&module=ProductAttributes
-            .route('GET',/(\/admin\/admin\.php\?do=ModuleCenter\/GetData&module=ProductAttributes)/).as('ModuleCenterGetData')
+            .intercept('GET',/(\/admin\/admin\.php\?do=ModuleCenter\/GetData&module=ProductAttributes)/).as('ModuleCenterGetData')
     }
 
     static installModule(name){

@@ -68,6 +68,12 @@ Then('The product price is {string}', (price) => {
 Then('The product weight is {string}', (weight) => {
     ProductInfo.weightIsEquals(weight);
 });
+Then('The VPE value is {string}', (vpeValue) => {
+    ProductInfo.vpeIsEquals(vpeValue);
+});
+Then('The product model is {string}', (model) => {
+    ProductInfo.modelIsEquals(model);
+});
 
 Then('There is no modifier  in the page', () => {
     ProductInfo.pageHasNoModifiers();

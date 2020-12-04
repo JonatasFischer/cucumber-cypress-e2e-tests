@@ -1,5 +1,8 @@
 Feature: Product Info Stock Validations (Allow Checkout Enabled)
-
+  
+  Background:
+    Given I am logged in the admin
+    
   Scenario: Selling without available quantity
 
     Given I have the following parameters configured in the settings page
