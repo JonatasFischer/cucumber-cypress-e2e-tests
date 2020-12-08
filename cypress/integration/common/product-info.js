@@ -13,6 +13,14 @@ Then('The error message {string} does not exist', (message) => {
     ProductInfo.errorMessageDoesntExist(message);
 });
 
+Then('There is no error message visible', () => {
+    ProductInfo.errorMessageDoesntExist('');
+});
+
+When('I click in the add to cart button', () => {
+    ProductInfo.clickOnAddToCartButton();
+});
+
 
 Then('The error message {string} is visible', (message) => {
     ProductInfo.errorMessageIsVisible(message);

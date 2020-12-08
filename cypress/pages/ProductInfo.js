@@ -9,8 +9,10 @@ export default class ProductInfo {
 	
 	static isActive() {
 		//here we wait in order to make sure that chrome runs all the page events and module register
-		cy.url().should('include', '/product_info.php')
 		cy.intercept('GET', /(\/shop.php\?do=CheckStatus)/).as('CheckStatus');
+		cy.url().should('include', '/product_info.php').wait(2000);
+		
+		
 	}
 	
 	static titleIsEqual(product) {
@@ -100,7 +102,11 @@ export default class ProductInfo {
 	}
 	
 	static errorMessageDoesntExist(message) {
-		cy.get(`div.cart-error-msg:contains(${message})`).should('not.exist');
+		if (!message) {
+			cy.get(`div.cart-error-msg`).should('not.be.visible');
+		} else {
+			cy.get(`div.cart-error-msg:contains(${message})`).should('not.exist');
+		}
 	}
 	
 	static errorMessageExist(message) {
@@ -115,6 +121,13 @@ export default class ProductInfo {
 		cy.get(`span.gm_products_vpe`).should('be.visible').should($el => {
 			let text = $el.text().trim();
 			return expect(text.trim()).to.equal(vpeValue)
+		});
+	}
+	
+	static clickOnAddToCartButton() {
+		cy.get('body').then(($body)=>{
+			debugger;
+			$body.find(`[name=btn-add-to-cart]`).click();
 		});
 	}
 }

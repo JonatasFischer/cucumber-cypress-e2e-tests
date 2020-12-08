@@ -1,11 +1,11 @@
-import Admin from '../../../../pages/admin/Admin'
-import Modules from '../../../../pages/admin/Modules'
-import Settings from '../../../../pages/admin/Settings'
-import Categories from '../../../../pages/admin/product/Categories'
-import Attributes from '../../../../pages/admin/Attributes'
-import ProductMaintenance from '../../../../pages/admin/product/ProductMaintenance'
-import ProductAttributes from '../../../../pages/admin/product/ProductAttributes'
-import PackingUnit from '../../../../pages/admin/PackinUnit'
+import Admin from '../../../../../pages/admin/Admin'
+import Modules from '../../../../../pages/admin/Modules'
+import Settings from '../../../../../pages/admin/Settings'
+import Categories from '../../../../../pages/admin/product/Categories'
+import Attributes from '../../../../../pages/admin/Attributes'
+import ProductMaintenance from '../../../../../pages/admin/product/ProductMaintenance'
+import ProductAttributes from '../../../../../pages/admin/product/ProductAttributes'
+import PackingUnit from '../../../../../pages/admin/PackinUnit'
 
 const {
 	Before,
@@ -56,8 +56,6 @@ before(() => {
 	Settings.saveButtonIsDisabled()
 	
 	
-	
-	
 	Attributes.visit();
 	
 	//delete old options
@@ -100,7 +98,7 @@ before(() => {
 	ProductMaintenance.save()
 	Categories.navigateProductAttributes("Product with Attribute")
 	ProductAttributes.clickLoadOptions("Attribute EN")
-	ProductAttributes.configureOption( "Attribute EN", 'Yes',{'checked':'true', "sort_order":"1"})
-	ProductAttributes.configureOption( "Attribute EN", 'No',{'checked':'true', "sort_order":"0"})
+	ProductAttributes.configureOption("Attribute EN", 'Yes', {'checked': 'true', "sort_order": "1"})
+	ProductAttributes.configureOption("Attribute EN", 'No', {'checked': 'true', "sort_order": "0"})
 	ProductAttributes.save()
 });
