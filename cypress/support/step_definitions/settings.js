@@ -1,6 +1,6 @@
 import {And, Given, Then, When} from '@badeball/cypress-cucumber-preprocessor';
-import Admin from "../../pages/admin/Admin";
-import Settings from "../../pages/admin/Settings";
+import Admin from "../pages/admin/Admin";
+import Settings from "../pages/admin/Settings";
 
 Given("I'm at the settings page", () => {
     Admin.login();

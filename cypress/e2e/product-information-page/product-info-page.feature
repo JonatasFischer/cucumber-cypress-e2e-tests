@@ -25,11 +25,11 @@ Feature: Product Information Page
     Then The product info page must be active
     And  The selected product is "test article 1"
     And  There is a modifier called "Size"
-    And  There is a option "S" for the modifier "Size"
+    And  There is an option "S" for the modifier "Size"
     And  The option "S" for the modifier "Size" is active
-    And  There is a option "M" for the modifier "Size"
+    And  There is an option "M" for the modifier "Size"
     And  The option "M" for the modifier "Size" is active
-    And  There is a option "L" for the modifier "Size"
+    And  There is an option "L" for the modifier "Size"
     And  The option "L" for the modifier "Size" is active
     And  There is a modifier called "Color"
     And  The option "Gold" for the modifier "Color" is active

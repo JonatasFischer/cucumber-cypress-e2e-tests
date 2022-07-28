@@ -1,8 +1,8 @@
 import {Given, Then, When} from '@badeball/cypress-cucumber-preprocessor';
-import Admin from "../../../pages/admin/Admin";
-import Categories from "../../../pages/admin/product/Categories";
-import Combinations from "../../../pages/admin/product/Combinations";
-import ProductMaintenance from "../../../pages/admin/product/ProductMaintenance";
+import Admin from "../../pages/admin/Admin";
+import Categories from "../../pages/admin/product/Categories";
+import Combinations from "../../pages/admin/product/Combinations";
+import ProductMaintenance from "../../pages/admin/product/ProductMaintenance";
 
 Given("I'm at the categories page", () => {
     Admin.login();
@@ -50,12 +50,11 @@ When("I delete any product with the name as {string}", (productName) => {
     Categories.deleteProductsNamedAs(productName)
 });
 
-When("I save the product", (quantity) => {
-    ProductMaintenance.save()
-});
+When("I save the product", ProductMaintenance.save);
+
 When("I define the product price as {string}", (price) => {
     ProductMaintenance.setPrice(price)
 });
-When("I define the product weight as {string}", (weight) => {
-    ProductMaintenance.setWeight(weight)
-});
+
+When("I define the product weight as {string}", ProductMaintenance.setWeight);
+Then(/^There is (\d+) product\(s\) named as "([^"]*)"$/, Categories.checkArticleRecordsNamesAs);
