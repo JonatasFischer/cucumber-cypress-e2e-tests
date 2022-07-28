@@ -5,7 +5,6 @@ import Combinations from "../../pages/admin/product/Combinations";
 import ProductMaintenance from "../../pages/admin/product/ProductMaintenance";
 
 Given("I'm at the categories page", () => {
-    Admin.login();
     Categories.visit()
 });
 When("I navigate to the {string} category", (categoryName) => {
@@ -38,8 +37,8 @@ When("I define the product quantity as {string}", (quantity) => {
     ProductMaintenance.setQuantity(quantity)
 });
 
-When("I check the field {string}", (fieldLabel) => {
-    ProductMaintenance.checkField(fieldLabel)
+When("I check the field {string} at the panel {string}", (fieldLabel, panel) => {
+    ProductMaintenance.checkField(fieldLabel, panel)
 });
 
 When("I fill the product name for the language {string} with {string}", (language, text) => {
@@ -58,3 +57,4 @@ When("I define the product price as {string}", (price) => {
 
 When("I define the product weight as {string}", ProductMaintenance.setWeight);
 Then(/^There is (\d+) product\(s\) named as "([^"]*)"$/, Categories.checkArticleRecordsNamesAs);
+Then("I expand all the boxes", ProductMaintenance.expandAll);

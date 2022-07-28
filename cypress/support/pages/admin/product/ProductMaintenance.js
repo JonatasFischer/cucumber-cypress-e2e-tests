@@ -1,5 +1,5 @@
-
 //div[data-config_value="BUTTON_PROPERTIES"]
+
 const PRODUCT_LINK = (name) => `td.categories_view_data > b > a:contains("${title}")`;
 const PRODUCT_ROW = (name) => `tr.dataTableRow > td > a:contains(${name})`;
 const PRODUCT_ACTIONS_BUTTON = () => `button > i.fa-caret-down`;
@@ -13,7 +13,6 @@ export default class ProductMaintenance {
         cy.get('button[type="submit"][title="Save"]').should('exist').click({force: true})
             .wait('@AdminRequestPortGet')
             .wait('@DirectHelpProxy')
-            .wait('@SessionTimeoutAjax')
             .wait('@DynamicShopMessages')
         ;
     }
@@ -22,20 +21,20 @@ export default class ProductMaintenance {
         cy.get('input[type="text"][name="products_quantity"]').should('exist').clear().type(quantity);
     }
 
-    static checkField(fieldLabel) {
+    static checkField(fieldLabel, panel) {
         cy.get(`div.control-group > div > label:contains(${fieldLabel})`)
             .parents('div.control-group:first')
             .should('exist')
-            .within((parent)=> {
+            .within((parent) => {
 
-            cy.get(`input[type="checkbox"]`).should('exist').then((checkbox) => {
-                if(!checkbox.is(':checked')) {
-                    cy.get('div.switcher').click();
-                }
+                cy.get(`input[type="checkbox"]`).should('exist').then((checkbox) => {
+                    if (!checkbox.is(':checked')) {
+                        cy.get('div.switcher').click();
+                    }
+                });
+
+
             });
-
-
-        });
     }
 
     static fillProdudctName(language, text) {
@@ -44,7 +43,7 @@ export default class ProductMaintenance {
             .parents('div.frame-wrapper:first')
             .within((element) => {
                 cy.get('input[name*="products_name"]').type(text)
-        })
+            })
 
     }
 
@@ -56,4 +55,13 @@ export default class ProductMaintenance {
     static setWeight(weight) {
         cy.get(`input[name="products_weight"]`).clear().type(weight)
     }
+
+    static expandAll() {
+        cy.get('body').then($body => {
+            if ($body.find('i.fa-plus-square-o').length) {
+                cy.get('i.fa-plus-square-o').click({force: true, multiple: true});
+            }
+            });
+    }
+
 }

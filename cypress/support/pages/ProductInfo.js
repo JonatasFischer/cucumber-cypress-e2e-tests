@@ -7,9 +7,10 @@ const MODIFIER_OPTION_SELECT = () => `div.modifier-content > select`;
 
 export default class ProductInfo {
 
-    static isActive() {
+    static isActive(productName) {
         //here we wait in order to make sure that chrome runs all the page events and module register
-        cy.url().should('include', '/product_info.php')
+        //cy.url().should('include', '/product_info.php')
+        cy.url().should('include', productName.replaceAll(" ", "-").toLowerCase())
         cy.server();
         cy.route('GET', /(\/shop.php\?do=CheckStatus)/).as('CheckStatus');
     }

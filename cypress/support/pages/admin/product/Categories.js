@@ -15,14 +15,10 @@ export default class Categories {
     }
 
     static visit() {
-        //http://gxdev43.local/admin/categories.php
         cy.visit('/admin/categories.php?language=en')
             .waitDefaultAdminRequests()
             .route('GET', /(configurationKey=relatedProductActionDropdownBtn)/).as('relatedProductActionDropdownBtn')
             .route('GET', /(\/admin\/admin\.php\?do=ResponsiveFileManagerModuleCenterModule\/GetConfiguration)/).as('FileManagerGetConfiguration')
-        // /admin/admin.php?do=ResponsiveFileManagerModuleCenterModule/GetConfiguration
-
-
     }
 
     static navigateCategory(categoryName) {

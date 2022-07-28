@@ -1,8 +1,8 @@
 import ProductInfo from '../pages/ProductInfo';
 import {And, Then, When} from '@badeball/cypress-cucumber-preprocessor';
 
-Then('The product info page must be active', () => {
-    ProductInfo.isActive();
+Then('The product info page must be active to the product {string}', (productName) => {
+    ProductInfo.isActive(productName);
 });
 
 Then('The error message {string} is not visible', (message) => {
