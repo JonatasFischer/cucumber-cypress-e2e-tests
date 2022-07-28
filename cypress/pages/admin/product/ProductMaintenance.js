@@ -56,18 +56,4 @@ export default class ProductMaintenance {
     static setWeight(weight) {
         cy.get(`input[name="products_weight"]`).clear().type(weight)
     }
-	
-	static setModel(model) {
-        cy.get(`input[name="products_model"]`).clear().type(model)
-		
-	}
-	
-	static setMinOrder(gm_min_order) {
-        cy.get(`input[name="gm_min_order"]`).clear().type(gm_min_order)
-		
-	}
-	static setGraduatedQuantity(gm_graduated_qty) {
-        cy.get(`input[name="gm_graduated_qty"]`).clear().type(gm_graduated_qty)
-		
-	}
 }

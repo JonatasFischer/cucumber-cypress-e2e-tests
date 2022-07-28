@@ -1,12 +1,13 @@
 {
-  "license": "UNLICENSED",
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "latest",
+    "@cypress/webpack-preprocessor": "latest",
+    "cypress": "latest"
   },
   "devDependencies": {
-    "cypress": "6.1.0"
-  },
-  "dependencies": {
-    "cypress-cucumber-preprocessor": "^4.0.0"
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "webpack": "^5.74.0"
   }
 }

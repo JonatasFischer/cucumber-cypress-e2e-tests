@@ -1,6 +1,6 @@
 const CONFIGURATION_INPUT_CHECK = (name) => `li[data-title="${name}"] > div.configuration-item > label.gx-switcher > input[type="checkbox"]`;
 const CONFIGURATION_CHECK_CLICK = (name) => `li[data-title="${name}"] > div.configuration-item > label.gx-switcher`;
-const SAVE_BUTTON = () => `div.bottom-save-bar > div.vue-portal-target > button `;
+const SAVE_BUTTON = () => `div.bottom-save-bar > button `;
 
 export default class Settings {
     static visit() {

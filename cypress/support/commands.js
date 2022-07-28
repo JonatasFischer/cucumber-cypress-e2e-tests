@@ -24,8 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 Cypress.Commands.add('waitDefaultAdminRequests', () => {
-   return cy.wait(['@DirectHelpProxy','@DynamicShopMessages','@SessionTimeoutAjax','@AdminRequestPortGet'])
+   return cy.wait(['@DirectHelpProxy','@DynamicShopMessages','@AdminRequestPortGet'])
 })
 Cypress.Commands.add('waitModuleRequests', () => {
-   return cy.wait(['@DynamicShopMessages','@GetAllMessages', '@SessionTimeoutAjax','@ModuleCenterGetData'])
+   return cy.wait(['@DynamicShopMessages','@GetAllMessages', '@ModuleCenterGetData'])
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false
 })

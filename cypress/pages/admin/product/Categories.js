@@ -18,8 +18,8 @@ export default class Categories {
         //http://gxdev43.local/admin/categories.php
         cy.visit('/admin/categories.php?language=en')
             .waitDefaultAdminRequests()
-            .intercept('GET', /(configurationKey=relatedProductActionDropdownBtn)/).as('relatedProductActionDropdownBtn')
-            .intercept('GET', /(\/admin\/admin\.php\?do=ResponsiveFileManagerModuleCenterModule\/GetConfiguration)/).as('FileManagerGetConfiguration')
+            .route('GET', /(configurationKey=relatedProductActionDropdownBtn)/).as('relatedProductActionDropdownBtn')
+            .route('GET', /(\/admin\/admin\.php\?do=ResponsiveFileManagerModuleCenterModule\/GetConfiguration)/).as('FileManagerGetConfiguration')
         // /admin/admin.php?do=ResponsiveFileManagerModuleCenterModule/GetConfiguration
 
 
@@ -91,7 +91,7 @@ export default class Categories {
                                 cy.waitDefaultAdminRequests()
                                     .get('div.ui-dialog-buttonset > button.btn-primary:contains("Delete")').click()
                                     .waitDefaultAdminRequests()
-                                    .wait(1000)
+                                    .wait(3000)
                                     .then((obj) => {this.deleteProductsNamedAs(productName)})
                             //this.deleteProductsNamedAs(productName)
                         })
