@@ -36,10 +36,6 @@ export async function setupNodeEvents(on, config) {
 export default defineConfig({
   projectId: 'm8ovoz',
   video: false,
-  env: {
-    ADMIN_EMAIL: 'jonatas.fischer@hotmail.com',
-    ADMIN_PWD: 'puNRSyUp',
-  },
   viewportHeight: 800,
   viewportWidth: 1280,
   e2e: {

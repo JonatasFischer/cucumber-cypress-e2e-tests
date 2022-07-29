@@ -1,8 +1,0 @@
-{
-  "testFiles": "**/*.feature",
-  "baseUrl": "YOUR SHOP BASE URL",
-  "env": {
-    "ADMIN_EMAIL": "YOUR ADMIN USER EMAIL",
-    "ADMIN_PWD": "YOUR ADMIN PASSWORD"
-  }
-}
