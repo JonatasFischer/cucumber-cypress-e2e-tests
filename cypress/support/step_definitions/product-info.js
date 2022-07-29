@@ -1,4 +1,4 @@
-import ProductInfo from '../pages/ProductInfo';
+import ProductInfo from '../page_objects/ProductInfo';
 import {And, Then, When} from '@badeball/cypress-cucumber-preprocessor';
 
 Then('The product info page must be active to the product {string}', (productName) => {

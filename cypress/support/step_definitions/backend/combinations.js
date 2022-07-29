@@ -1,5 +1,5 @@
 import {Then, When} from '@badeball/cypress-cucumber-preprocessor';
-import Combinations from "../pages/admin/product/Combinations";
+import Combinations from "../../page_objects/admin/product/Combinations";
 
 //admin/properties_combis.php?products_id
 Then("The product combinations page is active", () => {

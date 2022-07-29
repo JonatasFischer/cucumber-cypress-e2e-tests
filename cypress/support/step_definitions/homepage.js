@@ -1,4 +1,4 @@
-import Homepage from '../pages/Homepage';
+import Homepage from '../page_objects/Homepage';
 import {Given, Then, When} from '@badeball/cypress-cucumber-preprocessor';
 
 Given('I am on the homepage', () => {

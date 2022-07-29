@@ -86,7 +86,7 @@ export default class Categories {
                                     .waitDefaultAdminRequests()
                                     .wait(3000)
                                     .then((obj) => {
-                                        this.deleteProductsNamedAs(productName)
+                                        Categories.deleteProductsNamedAs(productName)
                                     })
                                 //this.deleteProductsNamedAs(productName)
                             })

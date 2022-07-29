@@ -1,6 +1,6 @@
 import {Given} from '@badeball/cypress-cucumber-preprocessor';
-import Modules from "../pages/admin/Modules";
-import Admin from "../pages/admin/Admin";
+import Modules from "../../page_objects/admin/Modules";
+import Admin from "../../page_objects/admin/Admin";
 
 
 Given('I have the module {string} installed', (moduleName) => {

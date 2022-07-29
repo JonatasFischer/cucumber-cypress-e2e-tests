@@ -1,5 +1,5 @@
 import {Given} from '@badeball/cypress-cucumber-preprocessor';
-import Attributes from "../pages/admin/Attributes";
+import Attributes from "../../page_objects/admin/Attributes";
 
 
 Given('I have the following attribute configured', (datatable) => {

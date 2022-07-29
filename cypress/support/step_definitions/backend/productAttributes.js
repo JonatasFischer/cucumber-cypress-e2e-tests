@@ -1,5 +1,5 @@
 import {When} from '@badeball/cypress-cucumber-preprocessor';
-import ProductAttributes from "../pages/admin/product/ProductAttributes";
+import ProductAttributes from "../../page_objects/admin/product/ProductAttributes";
 
 When("I click in the load attributes button for the attribute {string}", (attributeName) => {
     ProductAttributes.clickLoadOptions(attributeName)
