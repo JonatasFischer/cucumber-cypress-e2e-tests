@@ -1,26 +1,18 @@
 import ProductInfo from '../page_objects/ProductInfo';
+//import {And, Before, Then, When} from '@badeball/cypress-cucumber-preprocessor';
 import {And, Then, When} from '@badeball/cypress-cucumber-preprocessor';
-
+/*
+Before({tags: "@setup_product_stock_validation"}, function () {
+    return () => {
+        //alert("before something")
+        //debugger
+    }
+}());
+*/
 Then('The product info page must be active to the product {string}', (productName) => {
     ProductInfo.isActive(productName);
 });
 
-Then('The error message {string} is not visible', (message) => {
-    ProductInfo.errorMessageIsNotVisible(message);
-});
-
-Then('The error message {string} does not exist', (message) => {
-    ProductInfo.errorMessageDoesntExist(message);
-});
-
-
-Then('The error message {string} is visible', (message) => {
-    ProductInfo.errorMessageIsVisible(message);
-});
-
-Then('The error message {string} exist', (message) => {
-    ProductInfo.errorMessageExist(message);
-});
 
 And('The selected product is {string}', (product) => {
     ProductInfo.titleIsEqual(product);
@@ -53,12 +45,12 @@ And('The option {string} for the modifier {string} is not active', (optionName, 
     ProductInfo.checkModifierOptionIsInactive(optionName, modifierName);
 });
 
-Then('The button add to cart is disabled', (optionName, modifierName) => {
-    ProductInfo.isAddToCartButtonDisabled();
-});
-
-Then('The button add to cart is enabled', (optionName, modifierName) => {
-    ProductInfo.isAddToCartButtonEnabled();
+Then(/^The button add to cart is (enabled|disabled)$/, (status) => {
+    if(status === "enabled") {
+        ProductInfo.isAddToCartButtonEnabled();
+    } else {
+        ProductInfo.isAddToCartButtonDisabled();
+    }
 });
 
 Then('The product price is {string}', (price) => {
@@ -73,10 +65,18 @@ Then('There is no modifier  in the page', () => {
     ProductInfo.pageHasNoModifiers();
 });
 
-When('I set the quantity {string}', (quantity) => {
+When('I set the quantity to {int}', (quantity) => {
     ProductInfo.setProductQuantity(quantity);
 });
 
 And('I selected the option {string} for the modifier {string}', (optionName, modifierName) => {
     ProductInfo.selectModifierOption(optionName, modifierName);
+});
+
+When(/^The error message "([^"]*)" (doesn't|does) exists$/, function (message, status) {
+    if(status === "does") {
+        ProductInfo.errorMessageIsVisible(message);
+    } else {
+        ProductInfo.errorMessageIsNotVisible(message);
+    }
 });
