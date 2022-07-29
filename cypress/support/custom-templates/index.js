@@ -1,5 +1,4 @@
-const { loadTheme, stubMediaQuery } = require('./utils')
+const { loadCustomCss} = require('./utils')
 
 /* eslint-env mocha, browser */
-before(loadTheme())
-before(stubMediaQuery())
+before(loadCustomCss())
